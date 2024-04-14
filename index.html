@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="font-awesome.min.css">
+    <link rel="stylesheet" href="font-awesome.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Event Registration Form With UPI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-oCEkD5+cf0iR35VwaJ1K94KLDs66sS8FJOu5R2+z1I1MQuPI6ab3JS0TCpTKUZbX" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav>
+        <a class="navbar-brand" href="#">Event Registration Form</a>
+        <div class="ml-auto" style="color:white;">
+            <a style="color:white;margin-right:5px;" href="#home">Home</a>
+            <a style="color:white;margin-right:5px;" href="#aboutUs">About Project</a>
+            <a style="color:white;margin-right:5px;" href="#cont">Contact</a>
+            <!--<a href="#contact">Contact</a>-->
+        </div>
+    </nav>
+    <br><br>
+    <center>
+    <h1 style="color: #3498db; font-size: 32px; font-weight: bold;">Upcoming Events</h1>
+</center>
+
+    <div class="container mt-4">
+
+        
+      
+        <div class="card-container id="event">
+    <div class="card mb-4 modern-hover-card" onclick="openContactForm()">
+        <div class="card-body">
+            <h2 class="card-title">Tech Event</h2>
+            <p class="card-text">
+                Start Date: 21-May-2024
+                <br>
+                End Date: 22-May-2024
+                <br>
+                Payment Terms: 300 Per Member
+                <br>
+                Click to register !!!
+            </p>
+        </div>
+    </div>
+</div>
+
+        
+        <div id="contactForm" class="contact-form" style="display: none;">
+            <span class="close-btn" onclick="closeContactForm()">&times;</span>
+            <h2 class="mb-4">Event Registration</h2>
+        
+            
+            <form id="myForm">
+                <div class="form-group">
+                    <label for="teamName">Team Name:</label>
+                    <input type="text" class="form-control" id="teamName" name="teamName" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="teamSize">Team Size:</label>
+                    <select class="form-control" id="teamSize" name="teamSize" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+        
+                <div class="form-group">
+                    <label for="teamLeaderName">Team Leader Name:</label>
+                    <input type="text" class="form-control" id="teamLeaderName" name="teamLeaderName" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="teamLeaderRegNo">Team Leader Registration Number:</label>
+                    <input type="text" class="form-control" id="teamLeaderRegNo" name="teamLeaderRegNo" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="teamLeaderEmail">Team Leader Email:</label>
+                    <input type="email" class="form-control" id="teamLeaderEmail" name="teamLeaderEmail" required>
+                </div>
+        
+                <div class="form-group">
+                    <label for="teamLeaderPhone">Team Leader Phone Number:</label>
+                    <input type="tel" class="form-control" id="teamLeaderPhone" name="teamLeaderPhone" required>
+                </div>
+        
+                <!-- Members Information (based on Team Size) -->
+                <div id="membersInfo">
+                    <!-- Members information will be dynamically added based on Team Size -->
+                </div>
+                <div id="paymentSection" class="mt-4" style="display: none;">
+    <center>
+    <h3>Payment Details</h3>
+    <p id="paymentAmount">Payment Amount: INR : 0</p>
+    <!-- Add a QR code image placeholder -->
+    <img src="qr.png" alt="QR Code" width="400" height="400" style="display : inline-block;">
+</div>
+
+<!-- Add a new field for payment confirmation image -->
+<div class="form-group">
+    <label for="paymentConfirmation">Payment Confirmation Image:</label>
+    </center>
+    
+    
+    <!--old file chooser-->
+    <!--<input type="file" class="form-control" id="paymentConfirmation" name="paymentConfirmation" accept="image/*" required style="">-->
+    
+    <div class="file-input-container">
+    <label for="paymentConfirmation" class="file-input-label">Choose Image</label>
+    <input type="file" id="paymentConfirmation" class="file-input" name="paymentConfirmation" accept="image/*" required onchange="displaySelectedFileName(this)">
+    <span id="selectedFileName" class="selected-file-name"></span>
+    
+</div>
+<!--UPI payment-->
+<div>
+    <a id="payNowLink" href="upi://pay?pa=khushurawat13@okicici&pn=KhushiRawat&am=300&cu=INR">Pay Now</a>
+
+</div>
+
+    
+</div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <section id="aboutUs" class="mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <center>
+    <h1 style="color: #3498db; font-size: 32px; font-weight: bold;">About This Project</h1>
+                </center>
+                <p>
+                    This project involves developing a web application for event registration and payment collection
+                    for an Event.
+                    The application allows users to submit team and member information, 
+                    calculate total payment based on team size, and complete payments using QR
+                    code and UPI app integration. The tech stack includes HTML, CSS, and JavaScript for the front-end,
+                    while PHP and AJAX are used for handling form submissions and server-side processing.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<br><br>
+<section id="cont">
+<div class="card text-center">
+    <div class="card-body">
+        <h5 class="card-title">Have Questions?</h5>
+        <p class="card-text">Feel free to reach out to us. We are here to help!</p>
+        <button class="btn btn-primary" onclick="location.href='mailto:khushurawat13@gmail.com';">Email Us</button>
+    </div>
+</div>
+</section>
+
+
+        <br><br><br><br><br>
+    </div>
+
+    <!-- Footer -->
+    <footer id="site-footer" class="bg-dark text-white text-center py-2">
+        <p>&copy; 2024 Project.All rights reserved.<br>Developed by Khushi Rawat
+            </p>
+    </footer>
+
+
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var footer = document.getElementById("site-footer");
+
+        window.addEventListener("scroll", function () {
+            // Calculate the distance from the bottom
+            var distanceFromBottom = document.body.scrollHeight - window.innerHeight - window.scrollY;
+
+            // Show the footer only when the user is near the bottom 
+            if (distanceFromBottom < 150) {
+                footer.classList.add("visible");
+            } else {
+                footer.classList.remove("visible");
+            }
+        });
+    });
+</script>
+
+
+
+    <!--File Chooser-->
+    <script>
+    function displaySelectedFileName(input) {
+        var selectedFileName = document.getElementById("selectedFileName");
+        if (input.files.length > 0) {
+            selectedFileName.textContent = input.files[0].name;
+        } else {
+            selectedFileName.textContent = "";
+        }
+    }
+</script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
